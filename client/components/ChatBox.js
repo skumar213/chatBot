@@ -1,15 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const ChatBox = () => {
   const [message, setMessage] = useState("");
 
-  const handleClick = async (e) => {
+  const handleClick = async e => {
     const code = e.keyCode || e.which;
 
     if (code === 13) {
-      console.log(message)
+      console.log(message);
+      setMessage("");
     }
-  }
+  };
 
   return (
     <div className="chat">
@@ -19,7 +20,12 @@ const ChatBox = () => {
       <div>Messages go here</div>
       {/* input box */}
 
-      <input id="chatBox" onChange={e => setMessage(e.target.value)} onKeyPress={handleClick}></input>
+      <input
+        id="chatBox"
+        onChange={e => setMessage(e.target.value)}
+        onKeyPress={handleClick}
+        value={message}
+      ></input>
     </div>
   );
 };
