@@ -83,7 +83,7 @@ export const sendMessage = message => async dispatch => {
 };
 
 //reducer
-export default function (state = { messages: [] }, action) {
+export default function (state = { messages: [{message: "Hello!", type: 'bot'}] }, action) {
   switch (action.type) {
     case INPUT_SUCCESS:
       const messages = [

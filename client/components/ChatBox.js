@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userMessage, sendMessage } from "../store/watson";
 
@@ -6,6 +6,13 @@ const ChatBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const chat = useSelector(state => state.watson.messages);
+  const endOfMessages = useRef(null);
+
+  const scrollToBottom = () => {
+    endOfMessages.current.scrollIntoView({behavior:'smooth'})
+  }
+
+  useEffect(scrollToBottom, [chat])
 
   const handleClick = async e => {
     const code = e.keyCode || e.which;
@@ -33,6 +40,7 @@ const ChatBox = () => {
                   {msg.message}
                 </div>
               ))}
+              <div ref={endOfMessages}></div>
         </div>
         {/* input box */}
 
