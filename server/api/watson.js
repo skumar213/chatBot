@@ -20,8 +20,6 @@ router.get("/session", async (req, res, next) => {
       assistantId: process.env.WATSON_ASSISTANT_ID,
     });
 
-    console.log("session", session);
-
     res.json(session["result"]);
   } catch (error) {
     next(error);

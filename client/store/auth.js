@@ -31,6 +31,7 @@ export const me = () => async dispatch => {
 
 export const authenticate = (username, password, method) => async dispatch => {
   try {
+    //sets the token and chat session id for a user
     const res = await axios.post(`/auth/${method}`, {username, password})
     const {data: session} = await axios.get("/api/watson/session")
 
