@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userMessage, sendMessage } from "../store/watson";
 
+
 const ChatBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
@@ -49,6 +50,7 @@ const ChatBox = () => {
           onChange={e => setMessage(e.target.value)}
           onKeyPress={handleClick}
           value={message}
+          placeholder={chat.length === 1 ? "Type Here" : ''}
         ></input>
       </div>
     </div>

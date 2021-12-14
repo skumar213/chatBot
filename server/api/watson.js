@@ -20,7 +20,7 @@ router.get("/session", async (req, res, next) => {
       assistantId: process.env.WATSON_ASSISTANT_ID,
     });
 
-    console.log("session", session)
+    console.log("session", session);
 
     res.json(session["result"]);
   } catch (error) {
@@ -28,24 +28,21 @@ router.get("/session", async (req, res, next) => {
   }
 });
 
-
-router.post('/message', async (req,res,next) => {
-
+router.post("/message", async (req, res, next) => {
   const payload = {
     assistantId: process.env.WATSON_ASSISTANT_ID,
     sessionId: req.headers.session_id,
-    input: { 
+    input: {
       message_type: "text",
-      text: req.body.input
-    }
-  }
+      text: req.body.input,
+    },
+  };
 
   try {
     const message = await assistant.message(payload);
 
-    res.json(message['result'])
-
+    res.json(message["result"]);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
