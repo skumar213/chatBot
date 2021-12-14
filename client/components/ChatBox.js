@@ -29,7 +29,7 @@ const ChatBox = () => {
   return (
     <div className="container">
       <div className="chat">
-        <h1>Chatbot</h1>
+        <h1>Customer Service</h1>
         {/* handle messages */}
 
         <div className="historyContainer">
