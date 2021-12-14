@@ -3,9 +3,9 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
-import messages from './messages'
+import watson from './watson'
 
-const reducer = combineReducers({ auth, messages })
+const reducer = combineReducers({ auth, watson })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

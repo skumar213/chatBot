@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { userMessage } from "../store/watson";
 
 const ChatBox = () => {
+  const dispatch = useDispatch()
   const [message, setMessage] = useState("");
+  const chat = useSelector(state => state.watson.messages)
 
   const handleClick = async e => {
     const code = e.keyCode || e.which;
 
+    //checks if the user hit the enter key
     if (code === 13) {
       console.log(message);
+      dispatch(userMessage(message))
       setMessage("");
     }
   };
@@ -17,7 +23,7 @@ const ChatBox = () => {
       <h1>Chatbot</h1>
       {/* handle messages */}
 
-      <div>Messages go here</div>
+      {chat.length === 0 ? "" : chat.map(msg => <div className={msg.type}>{msg.message}</div>)}
       {/* input box */}
 
       <input
