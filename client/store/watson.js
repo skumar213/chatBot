@@ -54,6 +54,7 @@ export const userMessage = message => async dispatch => {
   try {
     dispatch(inputSuccess(message));
   } catch (error) {
+    console.log(error)
     dispatch(inputFail());
   }
 };
@@ -64,7 +65,20 @@ export const createSession = () => async dispatch => {
 
     dispatch(sessionSuccess(session));
   } catch (error) {
+    console.log(error)
     dispatch(sessionFail());
+  }
+};
+
+export const sendMessage = message => async dispatch => {
+  try {
+    const body = { input: message };
+    const { data: response } = await axios.post("/api/watson/message", body);
+
+    dispatch(messageSuccess(response.output.generic[0].text));
+  } catch (error) {
+    console.log(error)
+    dispatch(messageFail());
   }
 };
 
@@ -83,6 +97,11 @@ export default function (state = { messages: [] }, action) {
       localStorage.setItem("session", action.session["session_id"]);
       return { ...state };
     case SESSION_FAIL:
+      return { ...state };
+    case MESSAGE_SUCCESS:
+      const response = [...state.messages, {message: action.message, type: 'bot'}]
+      return { ...state, messages: response };
+    case MESSAGE_FAIL:
       return { ...state };
     default:
       return state;

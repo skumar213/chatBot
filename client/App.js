@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Routes from './Routes'
 
 if (localStorage.session) {
+  delete axios.defaults.headers.common['session_id']
   axios.defaults.headers.common['session_id'] = localStorage.session
 } else {
   delete axios.defaults.headers.common['session_id']
