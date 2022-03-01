@@ -7,7 +7,7 @@ Demo Video: https://www.youtube.com/watch?v=ML78pRB7F5s
 # Setup & Start
 1. Install dependencies: npm install
 2. Create a database called `chatbot`
-3. A few secret variables need to be defined before using the app. All of the following can be retreived from IBM Watson's website. Note that the free trial is only for 30 days and the api key will expire after that. Make a .env file on the project's root folder and add the following:
+3. A few secret variables need to be defined before using the app. All of the following can be retreived from IBM Watson's website. Note that the free trial is only for 30 days and the api key will expire after that. Make a .env file in the project's root folder and add the following:
     1. WATSON_ASSISTANT_APIKEY=""
     2. WATSON_ASSISTANT_UR=""
     3. WATSON_ASSISTANT_ID=""
